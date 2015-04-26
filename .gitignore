@@ -1,0 +1,8 @@
+
+.DS_Store
+.Trashes
+.DS_Store?
+
+*.pyc
+
+venv
