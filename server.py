@@ -31,9 +31,9 @@ def index():
 def thumbmail():
 
 	try:
-		# TODO - use requests to load images from urls?
 
-		# - opens a file. won't work for a url
+		# - opens a file. won't work for a url.
+		# this need to be a path to a file not http then uncomment the urllib stuff
 		#image = Image.open( request.args['image'] )
 
 		# - with requests
@@ -49,38 +49,36 @@ def thumbmail():
 		myfile = urllib.urlopen(request.args['image'])
 		image = Image.open( StringIO( myfile.read()) )
 
+
 		if image.mode not in ("L","RGB"):
 		 	image.convert("RGB")
 
-		# print image.size[0]
+
 		if request.args['w']:
 			w = float(request.args['w'])
 			#ratio=1
 			if image.size[0] > w:
 				ratio=image.size[0]/w
 
-			# print 'c'
 			newWidth = image.size[0]/ratio
-			# print 'd'
 			newHeight = image.size[1]/ratio
-			# print 'e'
 
 			#image = image.resize( [200,100], 1 )
 			image.thumbnail( (newWidth,newHeight), Image.ANTIALIAS )
+
 
 		img_buffer = cStringIO.StringIO()
 		image.save( img_buffer, format="PNG" )	
 		base_string = "data:image/png;base64,"+base64.b64encode(img_buffer.getvalue())
 
-		print base_string
-
+		#print base_string
 		return base_string
 
 	except:
-		print "FAILURE!"
+		print "FAIL!"
 		pass
 	
-	return "COMPLETE!"
+	return "FAIL!"
 
 
 # INIT APPLICATION ------------------------------------------>
