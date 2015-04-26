@@ -1,15 +1,17 @@
 #PyThumb
 
-Simple test returns base64 strings to be used for things like thumbnail images.
-
-Basically you pass it a path to an image it will return you it resized.
+Simple test. pass it images, returns base64 strings to be used for things like thumbnails
 
 Currently just pass 2 params. http path to image and a width contraint.
 
 '''
-http://localhost:5000/thumbnail
-?image=http://127.0.0.1:5000/static/img/hero-300x169-v2.png
-?w=100
+http://localhost:5000/thumbnail?image=http://127.0.0.1:5000/static/img/landscape.png?w=100
+'''
+
+would return something like
+
+'''
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAABLCAIAAACwbjOoAAAd4UlEQVR4nE16Waxm2XXWt9ba+0z/f+d...
 '''
 
 For a working example see the index.html file.
