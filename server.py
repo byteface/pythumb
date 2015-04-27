@@ -77,7 +77,6 @@ def generate_thumbnail( url, width ):
 
 		if width:
 			w = float(width)
-			#ratio=1
 			if image.size[0] > w:
 				ratio=image.size[0]/w
 
@@ -114,5 +113,4 @@ def thumbnail_processor():
 
 # INIT APPLICATION ----
 if __name__=="__main__":
-    #app.run(host='0.0.0.0', port=8080)
     app.run(threaded=True)
