@@ -1,14 +1,11 @@
 #!/usr/bin/env python2.7
 # -*- coding: utf-8 -*-
 
-from flask import Flask, request, render_template#, jsonify, Response, session
-#import json
+from flask import Flask, request, render_template
 
 from PIL import Image
 
 import urllib2 as urllib
-#import urllib
-#import io
 import cStringIO
 from StringIO import StringIO
 import base64
@@ -39,14 +36,14 @@ def list():
 
 
 @app.route('/thumbnail', methods=['GET','POST'])
-def thumbnail():
+def thumbnail_route():
 	return generate_thumbnail( request.args['image'], float( request.args['w'] ) );
 
 
 
 # functions ----
 
-def generate_thumbnail( url, width ):
+def thumbnail( url, width ):
 	"""
 	url - a http url
 	width - cast as float if grabbing off a request arg
@@ -57,14 +54,9 @@ def generate_thumbnail( url, width ):
 		# this need to be a path to a file not http then uncomment the urllib stuff
 		#image = Image.open( request.args['image'] )
 
-		# - with requests
-		#import requests
-		#image=requests.get('http://127.0.0.1:5000/static/img/IMG_0017.JPG').content#, config={'trust_env':False}).content
-
 		# - with url lib
 		#myfile = urllib.urlopen('http://127.0.0.1:5000/static/img/hero-300x169-v2.png')
 		#image = Image.open( StringIO( myfile.read()) )
-		#print image.size
 
 
 		myfile = urllib.urlopen(url)
@@ -105,9 +97,7 @@ def generate_thumbnail( url, width ):
 # context processor to make function available in templates
 @app.context_processor
 def thumbnail_processor():
-	def getThumbnail( path, width ):
-		return generate_thumbnail( path, width )
-	return dict(getThumbnail=getThumbnail)
+	return dict(thumbnail=thumbnail)
 
 
 

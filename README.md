@@ -11,7 +11,7 @@ will return something like...
 data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAABLCAIAAACwbjOoAAAd4UlEQVR4nE16Waxm2XXWt9ba+0z/f+d...
 ```
 
-For a working example run the app and also check out the code in
+For a working example run the app and also check out the code in...
 server.py
 index.html
 
@@ -24,7 +24,7 @@ python server.py
 ```
 
 ##lists
-if you like flask checkout the list renderer http://localhost:5000/list
+if you like Flask checkout the list renderer http://localhost:5000/list
 
 and the list.html template for implementation
 

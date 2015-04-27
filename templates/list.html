@@ -11,7 +11,7 @@
 <body>
 
 {% for image in list %}
-	<img alt="r8lst" title="r8lst" src="{{ getThumbnail( image.link, 100 ) | safe }}" />
+	<img alt="r8lst" title="r8lst" src="{{ thumbnail( image.link, 100 ) | safe }}" />
 {% endfor %}
 
 </body>
