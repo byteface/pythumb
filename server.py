@@ -2,9 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import Flask, request, render_template
-
 from PIL import Image
-
 import urllib2 as urllib
 import cStringIO
 from StringIO import StringIO
@@ -37,11 +35,13 @@ def list():
 
 @app.route('/thumbnail', methods=['GET','POST'])
 def thumbnail_route():
-	return generate_thumbnail( request.args['image'], float( request.args['w'] ) );
+	return thumbnail( request.args['image'], float( request.args['w'] ) );
 
 
 
 # functions ----
+
+# TODO - pass height. choose file type PNG / JPG etc. pass files.
 
 def thumbnail( url, width ):
 	"""
@@ -52,7 +52,7 @@ def thumbnail( url, width ):
 
 		# - opens a file. won't work for a url.
 		# this need to be a path to a file not http then uncomment the urllib stuff
-		#image = Image.open( request.args['image'] )
+		#image = Image.open( '/Users/michaellawrence/Desktop/r8lst/pythumb/static/img/IMG_0017.JPG' )
 
 		# - with url lib
 		#myfile = urllib.urlopen('http://127.0.0.1:5000/static/img/hero-300x169-v2.png')
